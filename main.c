@@ -26,7 +26,7 @@ int main(int agrc, char**argv)
     ZBuffer_print(&buffer);
 
     printf("read little endian int32 from buffer[0]: %d\n", ZBuffer_readInt32LE(&buffer, 0));
-    printf("read big endian int32 from buffer[32]: %d\n", ZBuffer_readInt32BE(&buffer, 5));
+    printf("read big endian int32 from buffer[5]: %d\n", ZBuffer_readInt32BE(&buffer, 5));
 
     ZBuffer_clear(&buffer);
     ZBuffer_writeCString(&buffer, "How do think this library is?", 0);
