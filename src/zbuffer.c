@@ -8,6 +8,8 @@ ZBuffer ZBuffer_make(void *data, ZSize size)
     return buffer;
 }
 
+ZSize ZBuffer_size(const ZBuffer *buffer) { return buffer->size; }
+
 void ZBuffer_clear(ZBuffer* buffer)
 {
     ZUInt8 *data = ZBuffer_data(buffer);
@@ -21,18 +23,18 @@ void ZBuffer_print(const ZBuffer *buffer)
 {
     static const char hexMap[] = "0123456789ABCDEF";
     ZUInt8 byte;
-    const ZUInt8 *buffer_data = ZBuffer_data(buffer);
-    ZSize i, last, buffer_size = ZBuffer_size(buffer);
+    const ZUInt8 *data = ZBuffer_data(buffer);
+    ZSize i, last, size = ZBuffer_size(buffer);
 
-    if(buffer_data == NULL) return;
+    if(data == NULL) return;
 
-    last = buffer_size - 1;
-    printf("<Buffer(%zu) ", buffer_size);
+    last = size - 1;
+    printf("<Buffer(%zu) ", size);
     for(i = 0; i < last; ++i) {
-        byte = buffer_data[i];
+        byte = data[i];
         printf("%c%c ", hexMap[byte >> 4], hexMap[byte & 0x0f]);
     }
-    byte = buffer_data[last];
+    byte = data[last];
     printf("%c%c>\n", hexMap[byte >> 4], hexMap[byte & 0x0f]);
 }
 

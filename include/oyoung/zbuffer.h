@@ -13,7 +13,6 @@ extern "C" {
 
 #define ZBuffer_Initializer {NULL, 0}
 #define ZBuffer_data(buffer) (buffer->data)
-#define ZBuffer_size(buffer) (buffer->size)
 
 typedef int8_t      ZInt8;
 typedef uint8_t     ZUInt8;
@@ -33,6 +32,7 @@ typedef struct ZBuffer
 
 
 ZBuffer ZBuffer_make(void *data, ZSize size);
+ZSize ZBuffer_size(const ZBuffer *buffer);
 
 void ZBuffer_clear(ZBuffer *buffer);
 ZSize ZBuffer_read(const ZBuffer* buffer, void *data, ZSize size, ZSize pos);
